@@ -1,0 +1,76 @@
+body {
+    /*background-image: url('../images/background.png');*/
+    font-family: 'Press Start 2P', cursive;
+    color:black;
+    font-size:22px;
+    overflow:hidden;
+    margin:0px; padding:0px;
+}
+
+body * {
+    position: absolute;
+    display: block;
+    margin:0px; padding:0px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    text-align: center;
+    
+}
+score {
+    text-align: center;
+}
+
+cookie {
+    background-image: url("../Images/cookie.png");
+    width:200px;
+    height: 200px;
+    
+
+}
+
+paddle {
+    background-image: url(../images/paddle.png);
+    width:25px; height:100px;
+}
+
+background {
+    background-image: url(../images/grass.png);
+    width:100%; height: 100%;
+    background-size: cover;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;    
+
+}
+finish {
+    width: 80px;
+    height: 40px;
+    color: red;
+    
+
+}
+
+#score{
+    margin-top: 10px;
+}
+
+#clicksPerSecond{
+    margin-top: 45px;
+}
+john {
+    background-image: url("../Images/john.png");
+    width: 160px; 
+    height: 300px;
+}
+batman {
+    background-image: url("../Images/batman.png");
+    width: 160px; 
+    height: 300px;
+}
+flash {
+    background-image: url("../Images/Flash.png");
+    width: 160px; 
+    height: 300px;
+}

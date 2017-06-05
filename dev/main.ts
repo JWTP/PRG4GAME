@@ -1,5 +1,3 @@
-class Main{
-    constructor(){
-        
-    }
-}
+window.addEventListener("load", function() {
+    new Game();
+});
