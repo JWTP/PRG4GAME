@@ -8,39 +8,46 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var BatmanTheClicker = (function () {
-    function BatmanTheClicker(clicksPS, cost, x, y, g) {
-        var _this = this;
-        this.clicksPerSecond = clicksPS;
-        this.costBatman = cost;
-        this.posX = x;
-        this.posY = y;
+var Clicker = (function () {
+    function Clicker(name, clicksPS, cost, posX, posY, amount, g) {
         this.game = g;
-        this.batman = document.createElement('batman');
-        document.body.appendChild(this.batman);
-        this.batman.addEventListener("click", function (event) { return _this.onMouseClick(event); });
-        this.move();
     }
-    BatmanTheClicker.prototype.onMouseClick = function (event) {
-        if (this.game.score > this.costBatman) {
-            this.game.score -= this.costBatman;
-            this.costBatman += 50;
-            this.game.clicksPerSecond += this.clicksPerSecond;
+    Clicker.prototype.onMouseClick = function (event) {
+        if (this.game.score >= this.cost) {
+            this.game.score -= this.cost;
+            this.cost *= 1.2;
+            this.amount += 1;
+            this.game.clicksPerSecond += this.clicksPS;
+            console.log(this.amount);
         }
         else {
-            alert("Batman kost " + this.costBatman);
+            alert(this.name + " costs " + Math.floor(this.cost) + " " + "batman's");
         }
     };
-    BatmanTheClicker.prototype.move = function () {
-        this.batman.style.transform = "translate(" + this.posX + "px, " + this.posY + "px)";
+    Clicker.prototype.move = function () {
+        this.div.style.transform = "translate(" + this.posX + "px, " + this.posY + "px)";
     };
-    return BatmanTheClicker;
-}());
-var Clicker = (function () {
-    function Clicker(clicksPS, cost, posX, posY) {
-    }
     return Clicker;
 }());
+var BatmanTheClicker = (function (_super) {
+    __extends(BatmanTheClicker, _super);
+    function BatmanTheClicker(name, clicksPS, cost, x, y, amount, g) {
+        var _this = _super.call(this, name, clicksPS, cost, x, y, amount, g) || this;
+        _this.clicksPS = clicksPS;
+        _this.cost = cost;
+        _this.posX = x;
+        _this.posY = y;
+        _this.game = g;
+        _this.name = name;
+        _this.amount = amount;
+        _this.div = document.createElement('batman');
+        document.body.appendChild(_this.div);
+        _this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
+        _this.move();
+        return _this;
+    }
+    return BatmanTheClicker;
+}(Clicker));
 var Cookie = (function () {
     function Cookie(x, y, g) {
         var _this = this;
@@ -53,7 +60,6 @@ var Cookie = (function () {
         this.move();
     }
     Cookie.prototype.onMouseClick = function (event) {
-        console.log(this.game.score);
         this.game.score += 1;
     };
     Cookie.prototype.move = function () {
@@ -63,32 +69,21 @@ var Cookie = (function () {
 }());
 var FlashTheClicker = (function (_super) {
     __extends(FlashTheClicker, _super);
-    function FlashTheClicker(clicksPS, cost, x, y, g) {
-        var _this = _super.call(this, clicksPS, cost, x, y) || this;
+    function FlashTheClicker(name, clicksPS, cost, x, y, amount, g) {
+        var _this = _super.call(this, name, clicksPS, cost, x, y, amount, g) || this;
         _this.clicksPS = clicksPS;
         _this.cost = cost;
         _this.posX = x;
         _this.posY = y;
         _this.game = g;
-        _this.flash = document.createElement('flash');
-        document.body.appendChild(_this.flash);
-        _this.flash.addEventListener("click", function (event) { return _this.onMouseClick(event); });
+        _this.name = name;
+        _this.amount = amount;
+        _this.div = document.createElement('flash');
+        document.body.appendChild(_this.div);
+        _this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
         _this.move();
         return _this;
     }
-    FlashTheClicker.prototype.onMouseClick = function (event) {
-        if (this.game.score > this.cost) {
-            this.game.score -= this.cost;
-            this.cost += 250;
-            this.game.clicksPerSecond += this.clicksPS;
-        }
-        else {
-            alert("the Flash kost " + this.cost);
-        }
-    };
-    FlashTheClicker.prototype.move = function () {
-        this.flash.style.transform = "translate(" + this.posX + "px, " + this.posY + "px)";
-    };
     return FlashTheClicker;
 }(Clicker));
 var Game = (function () {
@@ -96,25 +91,25 @@ var Game = (function () {
         var _this = this;
         this.clicksPerSecond = 0;
         this.score = 0;
+        this.clicker = new Clicker("Clicker", 0, 0, 0, 0, 0, this);
         this.cookie = new Cookie(200, 200, this);
-        this.john = new JohnTheClicker(0.015, 19, 0, 400, this);
-        this.batman = new BatmanTheClicker(0.05, 99, 200, 465, this);
-        this.flash = new FlashTheClicker(0.5, 999, 400, 465, this);
+        this.john = new JohnTheClicker("Alfred", (1 / 60), 20, 0, 10, 0, this);
+        this.batman = new BatmanTheClicker("Batman", (5 / 60), 100, 0, 110, 0, this);
+        this.flash = new FlashTheClicker("Riddler", (25 / 60), 1000, 0, 220, 0, this);
         requestAnimationFrame(function () { return _this.gameloop(); });
-        console.log(this.clicksPerSecond);
     }
     Game.prototype.gameloop = function () {
         var _this = this;
+        this.updateScore();
+        this.updateClicksPerSecond();
+        this.updateClicks();
         requestAnimationFrame(function () { return _this.gameloop(); });
-        setInterval(this.renderScore());
-        setInterval(this.renderClicksPerSecond());
-        setInterval(this.updateClicks());
     };
-    Game.prototype.renderScore = function () {
-        document.getElementById("score").innerHTML = "Score " + Math.floor(this.score);
+    Game.prototype.updateScore = function () {
+        document.getElementById("score").innerHTML = "Batman's: " + Math.floor(this.score);
     };
-    Game.prototype.renderClicksPerSecond = function () {
-        document.getElementById("clicksPerSecond").innerHTML = "Auto clicker " + this.clicksPerSecond;
+    Game.prototype.updateClicksPerSecond = function () {
+        document.getElementById("clicksPerSecond").innerHTML = "Batman's per second:  " + Math.ceil((this.clicksPerSecond * 60));
     };
     Game.prototype.updateClicks = function () {
         this.score += this.clicksPerSecond;
@@ -123,32 +118,22 @@ var Game = (function () {
 }());
 var JohnTheClicker = (function (_super) {
     __extends(JohnTheClicker, _super);
-    function JohnTheClicker(clicksPS, cost, x, y, g) {
-        var _this = _super.call(this, clicksPS, cost, x, y) || this;
+    function JohnTheClicker(name, clicksPS, cost, x, y, amount, g) {
+        var _this = _super.call(this, name, clicksPS, cost, x, y, amount, g) || this;
         _this.clicksPS = clicksPS;
         _this.cost = cost;
         _this.posX = x;
         _this.posY = y;
         _this.game = g;
-        _this.john = document.createElement('john');
-        document.body.appendChild(_this.john);
-        _this.john.addEventListener("click", function (event) { return _this.onMouseClick(event); });
+        _this.name = name;
+        _this.amount = amount;
+        _this.div = document.createElement('john');
+        document.body.appendChild(_this.div);
+        document.createElement('h2').innerHTML = "Johnny the clicker";
+        _this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
         _this.move();
         return _this;
     }
-    JohnTheClicker.prototype.onMouseClick = function (event) {
-        if (this.game.score > this.cost) {
-            this.game.score -= this.cost;
-            this.cost += 10;
-            this.game.clicksPerSecond += this.clicksPS;
-        }
-        else {
-            alert("john kost " + this.cost);
-        }
-    };
-    JohnTheClicker.prototype.move = function () {
-        this.john.style.transform = "translate(" + this.posX + "px, " + this.posY + "px)";
-    };
     return JohnTheClicker;
 }(Clicker));
 window.addEventListener("load", function () {

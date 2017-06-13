@@ -6,29 +6,34 @@ class Game{
     john:JohnTheClicker;
     batman:BatmanTheClicker;
     flash:FlashTheClicker;
+    clicker:Clicker;
+
     constructor(){
+        this.clicker = new Clicker("Clicker",0,0,0,0,0,this)
         this.cookie = new Cookie(200,200, this);
-        this.john = new JohnTheClicker(0.015,19,0,400,this);
-        this.batman = new BatmanTheClicker(0.05,99,200,465,this);
-        this.flash = new FlashTheClicker(0.5,999,400,465,this);
+        this.john = new JohnTheClicker("Alfred",(1/60),20,0,10,0,this);
+        this.batman = new BatmanTheClicker("Batman",(5/60),100,0,110,0,this);
+        this.flash = new FlashTheClicker("Riddler",(25/60),1000,0,220,0,this);
         requestAnimationFrame(() => this.gameloop());
-        
-        console.log(this.clicksPerSecond)
+
+
     }
 
     gameloop(){
+        
+        // setInterval(this.gameloop(),1000)
+        this.updateScore();
+        this.updateClicksPerSecond()
+        this.updateClicks()
         requestAnimationFrame(() => this.gameloop())
-        setInterval(this.renderScore());
-        setInterval(this.renderClicksPerSecond());
-        setInterval(this.updateClicks())
-    }
+}
 
-    renderScore(){
-        document.getElementById("score").innerHTML = "Score " + Math.floor(this.score);
+    updateScore(){
+        document.getElementById("score").innerHTML = "Batman's: " + Math.floor(this.score);
 
     }
-    renderClicksPerSecond(){
-        document.getElementById("clicksPerSecond").innerHTML = "Auto clicker " + this.clicksPerSecond;
+    updateClicksPerSecond(){
+        document.getElementById("clicksPerSecond").innerHTML = "Batman's per second:  " + Math.ceil((this.clicksPerSecond * 60));
     }
     updateClicks(){
         this.score += this.clicksPerSecond

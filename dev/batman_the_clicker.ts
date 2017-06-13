@@ -1,43 +1,28 @@
-class BatmanTheClicker{
+/// <reference path="Clicker.ts"/>
 
-    private batman:HTMLElement;
-    private clicksPerSecond:number;
-    private costBatman:number
-    private posX:number;
-    private posY:number;
-    private game:Game;
+class BatmanTheClicker extends Clicker{
 
-
-
-    constructor(clicksPS:number,cost:number,x:number,y:number,g:Game){
-        this.clicksPerSecond = clicksPS;
-        this.costBatman = cost;
+    constructor(name:string,clicksPS:number,cost:number,x:number,y:number,amount:number,g:Game){
+        super(name,clicksPS,cost,x,y,amount,g)
+        this.clicksPS = clicksPS;
+        this.cost = cost;
         this.posX = x;
         this.posY = y;
         this.game = g;
+        this.name = name;
+        this.amount = amount;
     
 
 
-        this.batman = document.createElement('batman')
-        document.body.appendChild(this.batman)
+        this.div = document.createElement('batman')
+        document.body.appendChild(this.div)
 
-        this.batman.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
+        this.div.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
 
-        this.move()
+        this.move();
 
     }
 
-    onMouseClick(event: MouseEvent){
-        if(this.game.score > this.costBatman){
-            this.game.score -= this.costBatman
-            this.costBatman += 50;
-            this.game.clicksPerSecond += this.clicksPerSecond;
-        }else{
-            alert("Batman kost " + this.costBatman)
-        }
-     }  
 
-    move(){
-        this.batman.style.transform = "translate("+this.posX+"px, "+this.posY+"px)";
-    }
+    
 }

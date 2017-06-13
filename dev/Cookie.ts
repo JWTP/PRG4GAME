@@ -21,8 +21,7 @@ class Cookie{
         
     }
         
-     onMouseClick(event: MouseEvent){
-        console.log(this.game.score)
+     onMouseClick(event: MouseEvent){   
         this.game.score += 1;
      }  
 
