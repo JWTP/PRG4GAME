@@ -19,7 +19,7 @@ body * {
 }
 
 #menu{
-    width: 30vw;
+    width: 25vw;
     height: 100vh;
     background-color: black;
 
@@ -31,10 +31,6 @@ body * {
     font-size: 250%;
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 
-    background-image: url("../Images/joker_quinn.png");
-
-    /*background: url(images/bg.jpg) no-repeat center center fixed; */
-    
 
 }
 
