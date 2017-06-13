@@ -51,8 +51,8 @@ var Clickers = (function (_super) {
     }
     return Clickers;
 }(Clicker));
-var Cookie = (function () {
-    function Cookie(x, y, g) {
+var BatmanLogo = (function () {
+    function BatmanLogo(x, y, g) {
         var _this = this;
         this.Xpos = x;
         this.Ypos = y;
@@ -62,21 +62,21 @@ var Cookie = (function () {
         this.cookie.addEventListener("click", function (event) { return _this.onMouseClick(event); });
         this.move();
     }
-    Cookie.prototype.onMouseClick = function (event) {
+    BatmanLogo.prototype.onMouseClick = function (event) {
         this.game.score += 1;
     };
-    Cookie.prototype.move = function () {
+    BatmanLogo.prototype.move = function () {
         this.cookie.style.transform = "translate(" + this.Xpos + "px, " + this.Ypos + "px)";
     };
-    return Cookie;
+    return BatmanLogo;
 }());
 var Game = (function () {
     function Game() {
         var _this = this;
         this.clicksPerSecond = 0;
-        this.score = 25000;
+        this.score = 0;
         this.clicker = new Clicker("Clicker", 0, 0, 0, 0, 0, this);
-        this.cookie = new Cookie(200, 200, this);
+        this.cookie = new BatmanLogo(200, 200, this);
         this.alfred = new Clickers("Alfred", (1 / 60), 20, 0, 100, 0, this);
         this.batman = new Clickers("Batman", (5 / 60), 100, 0, 120, 0, this);
         this.riddler = new Clickers("Riddler", (25 / 60), 1000, 0, 140, 0, this);
@@ -96,7 +96,7 @@ var Game = (function () {
         document.getElementById("score").innerHTML = "Batman's: " + Math.floor(this.score);
     };
     Game.prototype.updateClicksPerSecond = function () {
-        document.getElementById("clicksPerSecond").innerHTML = "Batman's per second:  " + Math.ceil((this.clicksPerSecond * 60));
+        document.getElementById("clicksPerSecond").innerHTML = "Batman's per second:  " + Math.floor((this.clicksPerSecond * 60));
     };
     Game.prototype.updateClicks = function () {
         this.score += this.clicksPerSecond;

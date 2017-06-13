@@ -1,4 +1,4 @@
-class Cookie{
+class BatmanLogo{
     private cookie:HTMLElement;
     private Xpos:number;
     private Ypos:number;

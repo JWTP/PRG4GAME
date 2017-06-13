@@ -1,8 +1,8 @@
 class Game{
 
     clicksPerSecond:number = 0;
-    score: number = 25000;
-    cookie:Cookie;
+    score: number = 0;
+    cookie:BatmanLogo;
     alfred:Clickers;
     batman:Clickers;
     riddler:Clickers;
@@ -13,7 +13,7 @@ class Game{
 
     constructor(){
         this.clicker = new Clicker("Clicker",0,0,0,0,0,this)
-        this.cookie = new Cookie(200,200, this);
+        this.cookie = new BatmanLogo(200,200, this);
         this.alfred = new Clickers("Alfred",(1/60),20,0,100,0,this);
         this.batman = new Clickers("Batman",(5/60),100,0,120,0,this);
         this.riddler = new Clickers("Riddler",(25/60),1000,0,140,0,this);
@@ -41,7 +41,7 @@ class Game{
 
     }
     updateClicksPerSecond(){
-        document.getElementById("clicksPerSecond").innerHTML = "Batman's per second:  " + Math.ceil((this.clicksPerSecond * 60));
+        document.getElementById("clicksPerSecond").innerHTML = "Batman's per second:  " + Math.floor((this.clicksPerSecond * 60));
     }
     updateClicks(){
         this.score += this.clicksPerSecond
