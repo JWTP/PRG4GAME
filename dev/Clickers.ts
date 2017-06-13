@@ -1,4 +1,4 @@
-class JohnTheClicker extends Clicker{
+class Clickers extends Clicker{
 
     constructor(name:string,clicksPS:number,cost:number,x:number,y:number,amount:number,g:Game){
         super(name,clicksPS,cost,x,y,amount,g)
@@ -10,14 +10,14 @@ class JohnTheClicker extends Clicker{
         this.name = name;
         this.amount = amount;
 
-
-        this.div = document.createElement('john')
-        document.body.appendChild(this.div)
-        document.createElement('h2').innerHTML = "Johnny the clicker"
+        this.div = document.createElement('li')
+        this.div.setAttribute("id", this.name);
+        document.getElementById("menu").appendChild(this.div);
+        this.div.innerHTML = this.name;
 
         this.div.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
 
         this.move();
     }
-
 }
+

@@ -18,6 +18,7 @@ var Clicker = (function () {
             this.cost *= 1.2;
             this.amount += 1;
             this.game.clicksPerSecond += this.clicksPS;
+            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase();
             console.log(this.amount);
         }
         else {
@@ -29,9 +30,9 @@ var Clicker = (function () {
     };
     return Clicker;
 }());
-var BatmanTheClicker = (function (_super) {
-    __extends(BatmanTheClicker, _super);
-    function BatmanTheClicker(name, clicksPS, cost, x, y, amount, g) {
+var Clickers = (function (_super) {
+    __extends(Clickers, _super);
+    function Clickers(name, clicksPS, cost, x, y, amount, g) {
         var _this = _super.call(this, name, clicksPS, cost, x, y, amount, g) || this;
         _this.clicksPS = clicksPS;
         _this.cost = cost;
@@ -40,13 +41,15 @@ var BatmanTheClicker = (function (_super) {
         _this.game = g;
         _this.name = name;
         _this.amount = amount;
-        _this.div = document.createElement('batman');
-        document.body.appendChild(_this.div);
+        _this.div = document.createElement('li');
+        _this.div.setAttribute("id", _this.name);
+        document.getElementById("menu").appendChild(_this.div);
+        _this.div.innerHTML = _this.name;
         _this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
         _this.move();
         return _this;
     }
-    return BatmanTheClicker;
+    return Clickers;
 }(Clicker));
 var Cookie = (function () {
     function Cookie(x, y, g) {
@@ -67,35 +70,19 @@ var Cookie = (function () {
     };
     return Cookie;
 }());
-var FlashTheClicker = (function (_super) {
-    __extends(FlashTheClicker, _super);
-    function FlashTheClicker(name, clicksPS, cost, x, y, amount, g) {
-        var _this = _super.call(this, name, clicksPS, cost, x, y, amount, g) || this;
-        _this.clicksPS = clicksPS;
-        _this.cost = cost;
-        _this.posX = x;
-        _this.posY = y;
-        _this.game = g;
-        _this.name = name;
-        _this.amount = amount;
-        _this.div = document.createElement('flash');
-        document.body.appendChild(_this.div);
-        _this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
-        _this.move();
-        return _this;
-    }
-    return FlashTheClicker;
-}(Clicker));
 var Game = (function () {
     function Game() {
         var _this = this;
         this.clicksPerSecond = 0;
-        this.score = 0;
+        this.score = 25000;
         this.clicker = new Clicker("Clicker", 0, 0, 0, 0, 0, this);
         this.cookie = new Cookie(200, 200, this);
-        this.john = new JohnTheClicker("Alfred", (1 / 60), 20, 0, 10, 0, this);
-        this.batman = new BatmanTheClicker("Batman", (5 / 60), 100, 0, 110, 0, this);
-        this.flash = new FlashTheClicker("Riddler", (25 / 60), 1000, 0, 220, 0, this);
+        this.alfred = new Clickers("Alfred", (1 / 60), 20, 0, 100, 0, this);
+        this.batman = new Clickers("Batman", (5 / 60), 100, 0, 120, 0, this);
+        this.riddler = new Clickers("Riddler", (25 / 60), 1000, 0, 140, 0, this);
+        this.poison_ivy = new Clickers("Poison Ivy", (50 / 60), 10000, 0, 160, 0, this);
+        this.bane = new Clickers("Bane", (75 / 60), 25000, 0, 180, 0, this);
+        this.Harley_Quinn = new Clickers("Harley Quinn", (100 / 60), 50000, 0, 200, 0, this);
         requestAnimationFrame(function () { return _this.gameloop(); });
     }
     Game.prototype.gameloop = function () {
@@ -116,26 +103,6 @@ var Game = (function () {
     };
     return Game;
 }());
-var JohnTheClicker = (function (_super) {
-    __extends(JohnTheClicker, _super);
-    function JohnTheClicker(name, clicksPS, cost, x, y, amount, g) {
-        var _this = _super.call(this, name, clicksPS, cost, x, y, amount, g) || this;
-        _this.clicksPS = clicksPS;
-        _this.cost = cost;
-        _this.posX = x;
-        _this.posY = y;
-        _this.game = g;
-        _this.name = name;
-        _this.amount = amount;
-        _this.div = document.createElement('john');
-        document.body.appendChild(_this.div);
-        document.createElement('h2').innerHTML = "Johnny the clicker";
-        _this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
-        _this.move();
-        return _this;
-    }
-    return JohnTheClicker;
-}(Clicker));
 window.addEventListener("load", function () {
     new Game();
 });

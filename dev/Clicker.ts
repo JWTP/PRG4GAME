@@ -17,6 +17,7 @@ class Clicker{
             this.cost *=1.2;
             this.amount +=1;
             this.game.clicksPerSecond += this.clicksPS;
+            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase();
             console.log(this.amount);
         }else{
             alert(this.name + " costs " + Math.floor(this.cost) + " " + "batman's")

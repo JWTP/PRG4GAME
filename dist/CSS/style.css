@@ -15,12 +15,39 @@ body * {
     box-sizing: border-box;
     text-align: center;
     color: white;
-    font-size: 250%;
-    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+    
 }
 
-score {
+#menu{
+    width: 25vw;
+    height: 100vh;
+    background-color: black;
+
+    border-right: 2px solid white;
+    left: 0;
+    top: 0;
+    position: absolute;
+
+    font-size: 250%;
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+
+    background-image: url("../Images/joker_quinn.jpg");
+
+    /*background: url(images/bg.jpg) no-repeat center center fixed; */
+    
+
+}
+
+#score {
     text-align: center;
+    font-size: 250%;
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+    
+}
+#clicksPerSecond {
+    text-align: center;
+    font-size: 250%;
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
     
 }
 
@@ -29,15 +56,16 @@ cookie {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 200px;
-    height: 200px;
-    margin: 0 32vw;
+    width: 400px;
+    height: 400px;
+    left: 24vw;
+    top: 2vh;
     position: absolute;
 }
 
 cookie:active{
-    width:210px;
-    height:210px;
+    width:410px;
+    height:410px;
 }
 
 #score{
@@ -50,50 +78,7 @@ cookie:active{
     text-align: center;
 }
 
-john {
-    background-image: url("../Images/alfred.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 80px; 
-    height: 120px;
-    position: absolute;
-}
 
-john:active{
-    width: 100px; 
-    height: 140px;
-}
-
-batman {
-    background-image: url("../Images/batman.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 80px; 
-    height: 120px;
-    position: absolute;
-}
-
-batman:active{
-    width: 80px;
-    height: 140px;
-}
-
-flash {
-    background-image: url("../Images/riddler.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 80px; 
-    height: 120px;
-    position: absolute;
-}
-
-flash:active{
-    width: 100px; 
-    height: 140px;   
-}
 .menu{
     height: 100vh;
 }
