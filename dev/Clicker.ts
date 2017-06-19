@@ -12,7 +12,6 @@ class Clicker{
     constructor(name:string,clicksPS:number, cost:number,posX:number, posY:number,g:Game){
         this.game = g;
         
-        
     }
     protected onMouseClick(event: MouseEvent){
         if(this.game.score >= this.cost){

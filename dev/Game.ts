@@ -3,7 +3,7 @@ class Game{
     clicksPerSecond:number = 0;
     score: number = 1000000000000;
     amount: number = 0;
-    cookie:BatmanLogo;
+    cookie:Batman;
     alfred:Clickers;
     batman:Clickers;
     riddler:Clickers;
@@ -14,7 +14,7 @@ class Game{
 
 
     constructor(){
-        this.cookie         = new BatmanLogo(200,200, this);
+        this.cookie         = new Batman(200,200, this);
         this.clicker        = new Clicker("Clicker",0,0,0,0,this)
         this.alfred         = new Clickers("Alfred",(1/60),20,0,100,this);
         this.batman         = new Clickers("Batman",(5/60),100,0,120,this);

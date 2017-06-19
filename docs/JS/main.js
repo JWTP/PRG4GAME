@@ -8,6 +8,25 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var Batman = (function () {
+    function Batman(x, y, g) {
+        var _this = this;
+        this.Xpos = x;
+        this.Ypos = y;
+        this.game = g;
+        this.cookie = document.createElement("cookie");
+        document.body.appendChild(this.cookie);
+        this.cookie.addEventListener("click", function (event) { return _this.onMouseClick(event); });
+        this.move();
+    }
+    Batman.prototype.onMouseClick = function (event) {
+        this.game.score += 1;
+    };
+    Batman.prototype.move = function () {
+        this.cookie.style.transform = "translate(" + this.Xpos + "px, " + this.Ypos + "px)";
+    };
+    return Batman;
+}());
 var Clicker = (function () {
     function Clicker(name, clicksPS, cost, posX, posY, g) {
         this.amount = 0;
@@ -50,32 +69,13 @@ var Clickers = (function (_super) {
     }
     return Clickers;
 }(Clicker));
-var BatmanLogo = (function () {
-    function BatmanLogo(x, y, g) {
-        var _this = this;
-        this.Xpos = x;
-        this.Ypos = y;
-        this.game = g;
-        this.cookie = document.createElement("cookie");
-        document.body.appendChild(this.cookie);
-        this.cookie.addEventListener("click", function (event) { return _this.onMouseClick(event); });
-        this.move();
-    }
-    BatmanLogo.prototype.onMouseClick = function (event) {
-        this.game.score += 1;
-    };
-    BatmanLogo.prototype.move = function () {
-        this.cookie.style.transform = "translate(" + this.Xpos + "px, " + this.Ypos + "px)";
-    };
-    return BatmanLogo;
-}());
 var Game = (function () {
     function Game() {
         var _this = this;
         this.clicksPerSecond = 0;
         this.score = 1000000000000;
         this.amount = 0;
-        this.cookie = new BatmanLogo(200, 200, this);
+        this.cookie = new Batman(200, 200, this);
         this.clicker = new Clicker("Clicker", 0, 0, 0, 0, this);
         this.alfred = new Clickers("Alfred", (1 / 60), 20, 0, 100, this);
         this.batman = new Clickers("Batman", (5 / 60), 100, 0, 120, this);
