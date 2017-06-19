@@ -11,8 +11,8 @@ class Clicker{
 
     constructor(name:string,clicksPS:number, cost:number,posX:number, posY:number,g:Game){
         this.game = g;
-        
     }
+
     protected onMouseClick(event: MouseEvent){
         if(this.game.score >= this.cost){
             this.game.score -= this.cost
@@ -24,6 +24,7 @@ class Clicker{
             alert(this.name + " costs " + Math.floor(this.cost) + " " + "batmans")
         }
      }
+     
     protected move(){
         this.div.style.transform = "translate("+this.posX+"px, "+this.posY+"px)";
     }     
