@@ -19,11 +19,10 @@ var Clicker = (function () {
             this.cost *= 1.2;
             this.amount += 1;
             this.game.clicksPerSecond += this.clicksPS;
-            console.log(this.amount);
             document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " " + Math.floor(this.cost);
         }
         else {
-            alert(this.name + " costs " + Math.floor(this.cost) + " " + "batman's");
+            alert(this.name + " costs " + Math.floor(this.cost) + " " + "batmans");
         }
     };
     Clicker.prototype.move = function () {
@@ -44,7 +43,7 @@ var Clickers = (function (_super) {
         _this.div = document.createElement('li');
         _this.div.setAttribute("id", _this.name);
         document.getElementById("menu").appendChild(_this.div);
-        _this.div.innerHTML = _this.name;
+        _this.div.innerHTML = _this.name.toUpperCase() + " " + Math.floor(_this.cost);
         _this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
         _this.move();
         return _this;
@@ -105,6 +104,31 @@ var Game = (function () {
     return Game;
 }());
 window.addEventListener("load", function () {
-    new Game();
+    new Startscren();
 });
+var Startscren = (function () {
+    function Startscren() {
+        this.background = document.createElement("div");
+        document.body.appendChild(this.background);
+        this.background.setAttribute("id", "overlay");
+        this.background = document.createElement("div");
+        document.body.appendChild(this.background);
+        this.background.setAttribute("id", "startScreen");
+        var inside = document.createElement("div");
+        this.background.appendChild(inside);
+        inside.setAttribute("id", "startScreenInside");
+        inside.innerHTML = "<h3>Batman Basher</h3>";
+        var button = document.createElement("button");
+        inside.appendChild(button);
+        button.setAttribute("id", "button");
+        button.innerHTML = "Start Game";
+        button.addEventListener("click", this.startGame);
+    }
+    Startscren.prototype.startGame = function () {
+        document.getElementById("startScreen").remove();
+        document.getElementById("overlay").remove();
+        new Game();
+    };
+    return Startscren;
+}());
 //# sourceMappingURL=main.js.map

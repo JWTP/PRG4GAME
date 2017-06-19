@@ -12,7 +12,7 @@ class Clickers extends Clicker{
         this.div = document.createElement('li')
         this.div.setAttribute("id", this.name);
         document.getElementById("menu").appendChild(this.div);
-        this.div.innerHTML = this.name;
+        this.div.innerHTML = this.name.toUpperCase() + " " + Math.floor(this.cost);
 
         this.div.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
 
