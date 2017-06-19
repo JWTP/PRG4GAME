@@ -9,7 +9,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Clicker = (function () {
-    function Clicker(name, clicksPS, cost, posX, posY, amount, g) {
+    function Clicker(name, clicksPS, cost, posX, posY, g) {
+        this.amount = 0;
         this.game = g;
     }
     Clicker.prototype.onMouseClick = function (event) {
@@ -18,8 +19,8 @@ var Clicker = (function () {
             this.cost *= 1.2;
             this.amount += 1;
             this.game.clicksPerSecond += this.clicksPS;
-            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase();
             console.log(this.amount);
+            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " " + Math.floor(this.cost);
         }
         else {
             alert(this.name + " costs " + Math.floor(this.cost) + " " + "batman's");
@@ -32,15 +33,14 @@ var Clicker = (function () {
 }());
 var Clickers = (function (_super) {
     __extends(Clickers, _super);
-    function Clickers(name, clicksPS, cost, x, y, amount, g) {
-        var _this = _super.call(this, name, clicksPS, cost, x, y, amount, g) || this;
+    function Clickers(name, clicksPS, cost, x, y, g) {
+        var _this = _super.call(this, name, clicksPS, cost, x, y, g) || this;
         _this.clicksPS = clicksPS;
         _this.cost = cost;
         _this.posX = x;
         _this.posY = y;
         _this.game = g;
         _this.name = name;
-        _this.amount = amount;
         _this.div = document.createElement('li');
         _this.div.setAttribute("id", _this.name);
         document.getElementById("menu").appendChild(_this.div);
@@ -74,15 +74,16 @@ var Game = (function () {
     function Game() {
         var _this = this;
         this.clicksPerSecond = 0;
-        this.score = 0;
-        this.clicker = new Clicker("Clicker", 0, 0, 0, 0, 0, this);
+        this.score = 1000000000000;
+        this.amount = 0;
         this.cookie = new BatmanLogo(200, 200, this);
-        this.alfred = new Clickers("Alfred", (1 / 60), 20, 0, 100, 0, this);
-        this.batman = new Clickers("Batman", (5 / 60), 100, 0, 120, 0, this);
-        this.riddler = new Clickers("Riddler", (25 / 60), 1000, 0, 140, 0, this);
-        this.poison_ivy = new Clickers("Poison Ivy", (50 / 60), 10000, 0, 160, 0, this);
-        this.bane = new Clickers("Bane", (75 / 60), 25000, 0, 180, 0, this);
-        this.Harley_Quinn = new Clickers("Harley Quinn", (100 / 60), 50000, 0, 200, 0, this);
+        this.clicker = new Clicker("Clicker", 0, 0, 0, 0, this);
+        this.alfred = new Clickers("Alfred", (1 / 60), 20, 0, 100, this);
+        this.batman = new Clickers("Batman", (5 / 60), 100, 0, 120, this);
+        this.riddler = new Clickers("Riddler", (25 / 60), 1000, 0, 140, this);
+        this.poison_ivy = new Clickers("Poison Ivy", (50 / 60), 10000, 0, 160, this);
+        this.bane = new Clickers("Bane", (75 / 60), 25000, 0, 180, this);
+        this.Harley_Quinn = new Clickers("Harley Quinn", (100 / 60), 50000, 0, 200, this);
         requestAnimationFrame(function () { return _this.gameloop(); });
     }
     Game.prototype.gameloop = function () {
@@ -93,10 +94,10 @@ var Game = (function () {
         requestAnimationFrame(function () { return _this.gameloop(); });
     };
     Game.prototype.updateScore = function () {
-        document.getElementById("score").innerHTML = "Batman's: " + Math.floor(this.score);
+        document.getElementById("score").innerHTML = "Batmans: " + Math.floor(this.score);
     };
     Game.prototype.updateClicksPerSecond = function () {
-        document.getElementById("clicksPerSecond").innerHTML = "Batman's per second:  " + Math.floor((this.clicksPerSecond * 60));
+        document.getElementById("clicksPerSecond").innerHTML = "Batmans per second:  " + Math.floor((this.clicksPerSecond * 60));
     };
     Game.prototype.updateClicks = function () {
         this.score += this.clicksPerSecond;

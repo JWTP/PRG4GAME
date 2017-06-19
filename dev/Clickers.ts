@@ -1,14 +1,13 @@
 class Clickers extends Clicker{
 
-    constructor(name:string,clicksPS:number,cost:number,x:number,y:number,amount:number,g:Game){
-        super(name,clicksPS,cost,x,y,amount,g)
+    constructor(name:string,clicksPS:number,cost:number,x:number,y:number,g:Game){
+        super(name,clicksPS,cost,x,y,g)
         this.clicksPS = clicksPS;
         this.cost = cost;
         this.posX = x;
         this.posY = y;
         this.game = g;
         this.name = name;
-        this.amount = amount;
 
         this.div = document.createElement('li')
         this.div.setAttribute("id", this.name);

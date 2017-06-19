@@ -8,7 +8,6 @@ class BatmanLogo{
     constructor(x:number, y:number,g:Game){
         this.Xpos = x;
         this.Ypos = y;
-        
         this.game = g;
 
         this.cookie = document.createElement("cookie");

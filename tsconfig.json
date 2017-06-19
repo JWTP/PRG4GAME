@@ -4,9 +4,9 @@
         "removeComments": true,
         "target":"es5",
         "watch": true,
-        "out": "dist/js/main.js"
+        "out": "docs/js/main.js"
     },
     "exclude": [
-        "dist"
+        "docs"
     ]
 }
