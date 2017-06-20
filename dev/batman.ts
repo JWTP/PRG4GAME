@@ -14,12 +14,11 @@ class Batman{
         this.batman = document.createElement("cookie");
         document.body.appendChild(this.batman);
 
-        this.random = (Math.random()*500)
+        this.random = (Math.random()*500);
 
-        console.log(this.random)
-        this.batman.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
+        this.batman.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)); 
         
-        this.move()
+        this.move();
         
     }
     
@@ -27,10 +26,9 @@ class Batman{
     onMouseClick(event: MouseEvent){   
         this.game.score += 1;
         if(this.clicked > this.random){
-            let joker = new Joker(this.game)
+            let joker = new Joker(this.game);
             this.clicked = 0;
             this.random = (Math.random()*1000);
-            console.log(this.random)
         }else{
             this.clicked +=1;
         }

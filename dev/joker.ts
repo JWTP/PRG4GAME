@@ -3,7 +3,7 @@ class Joker {
     private div:HTMLElement;
     private posX: number = 0;
     private posY: number = 0;
-    private g:Game
+    private g:Game;
 
     constructor(game:Game){
         this.g = game;
@@ -12,13 +12,13 @@ class Joker {
 
 
 
-        this.div = document.createElement('joker')
-        this.div.setAttribute("id", "joker")
-        document.body.appendChild(this.div)
+        this.div = document.createElement('joker');
+        this.div.setAttribute("id", "joker");
+        document.body.appendChild(this.div);
 
-        this.div.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event))
+        this.div.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event));
 
-        this.move()
+        this.move();
 
     }
     onMouseClick(event:MouseEvent){

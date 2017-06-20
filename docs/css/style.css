@@ -40,6 +40,11 @@ body * {
     top: 0px;
     left: 0px;
 }*/
+
+li{
+    cursor: pointer;
+}
+
 #startScreen{
     position: absolute;
     width: 70vw; height: 70vh;
@@ -69,6 +74,7 @@ body * {
     color: white;
     margin-left: 470px;
     font-size: 150%;
+    cursor: pointer;
 }
 
 #score {
@@ -95,6 +101,7 @@ cookie {
     left: 28vw;
     top: 2vh;
     position: absolute;
+    cursor: pointer;
 }
 
 cookie:active{
@@ -107,4 +114,5 @@ cookie:active{
     background-image: url("../images/joker.png");
     width: 60px;
     height: 120px;
+    cursor: pointer;
 }

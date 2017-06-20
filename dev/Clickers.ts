@@ -9,12 +9,12 @@ class Clickers extends Clicker{
         this.game = g;
         this.name = name;
 
-        this.div = document.createElement('li')
+        this.div = document.createElement('li');
         this.div.setAttribute("id", this.name);
         document.getElementById("menu").appendChild(this.div);
-        this.div.innerHTML = this.name.toUpperCase() + " [" + Math.floor(this.cost) +"]";
+        this.div.innerHTML = this.name.toUpperCase() + " [$" + Math.floor(this.cost) +"]";
 
-        this.div.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
+        this.div.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event));
 
         this.move();
     }

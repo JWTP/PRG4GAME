@@ -10,18 +10,16 @@ class Clicker{
     protected game:Game;
 
     constructor(name:string,clicksPS:number, cost:number,posX:number, posY:number,g:Game){
-        this.game = g;
+    this.game = g;
     }
 
     protected onMouseClick(event: MouseEvent){
         if(this.game.score >= this.cost){
-            this.game.score -= this.cost
+            this.game.score -= this.cost;
             this.cost *= 1.1;
             this.amount += 1;
             this.game.clicksPerSecond += this.clicksPS;
-            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " [" + Math.floor(this.cost) + "]";
-        }else{
-            alert(this.name + " costs " + Math.floor(this.cost) + " " + "batmans")
+            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " [$" + Math.floor(this.cost) + "]";
         }
      }
 

@@ -16,7 +16,7 @@ class Game{
     constructor(){
         // this.joker          = new Joker();
         this.cookie         = new Batman(200,200, this);
-        this.clicker        = new Clicker("Clicker",0,0,0,0,this)
+        // this.clicker        = new Clicker("Clicker",0,0,0,0,this)
         this.alfred         = new Clickers("Alfred",(1/60),20,0,100,this);
         this.batman         = new Clickers("Batman",(5/60),100,0,120,this);
         this.riddler        = new Clickers("Riddler",(25/60),1000,0,140,this);
@@ -29,11 +29,10 @@ class Game{
 
     gameloop(){
         
-        // setInterval(this.gameloop(),1000)
         this.updateScore();
-        this.updateClicksPerSecond()
-        this.updateClicks()
-        requestAnimationFrame(() => this.gameloop())
+        this.updateClicksPerSecond();
+        this.updateClicks();
+        requestAnimationFrame(() => this.gameloop());
 }
 
     updateScore(){
