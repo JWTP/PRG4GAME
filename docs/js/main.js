@@ -11,16 +11,29 @@ var __extends = (this && this.__extends) || (function () {
 var Batman = (function () {
     function Batman(x, y, g) {
         var _this = this;
+        this.clicked = 0;
+        this.random = 0;
         this.Xpos = x;
         this.Ypos = y;
         this.game = g;
         this.batman = document.createElement("cookie");
         document.body.appendChild(this.batman);
+        this.random = (Math.random() * 1000);
+        console.log(this.random);
         this.batman.addEventListener("click", function (event) { return _this.onMouseClick(event); });
         this.move();
     }
     Batman.prototype.onMouseClick = function (event) {
         this.game.score += 1;
+        if (this.clicked > this.random) {
+            var joker = new Joker(this.game);
+            this.clicked = 0;
+            this.random = (Math.random() * 1000);
+            console.log(this.random);
+        }
+        else {
+            this.clicked += 1;
+        }
     };
     Batman.prototype.move = function () {
         this.batman.style.transform = "translate(" + this.Xpos + "px, " + this.Ypos + "px)";
@@ -102,6 +115,29 @@ var Game = (function () {
         this.score += this.clicksPerSecond;
     };
     return Game;
+}());
+var Joker = (function () {
+    function Joker(game) {
+        var _this = this;
+        this.posX = 0;
+        this.posY = 0;
+        this.g = game;
+        this.posX = (Math.random() * 500);
+        this.posY = (Math.random() * window.innerHeight) - 200;
+        this.div = document.createElement('joker');
+        this.div.setAttribute("id", "joker");
+        document.body.appendChild(this.div);
+        this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
+        this.move();
+    }
+    Joker.prototype.onMouseClick = function (event) {
+        this.g.score += 100;
+        document.getElementById('joker').remove();
+    };
+    Joker.prototype.move = function () {
+        this.div.style.transform = "translate(" + this.posX + "px, " + this.posY + "px)";
+    };
+    return Joker;
 }());
 window.addEventListener("load", function () {
     new Startscren();

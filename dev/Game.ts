@@ -11,9 +11,10 @@ class Game{
     private poison_ivy:Clickers;
     private bane:Clickers;
     private Harley_Quinn:Clickers;
-
+    private joker:Joker;
 
     constructor(){
+        // this.joker          = new Joker();
         this.cookie         = new Batman(200,200, this);
         this.clicker        = new Clicker("Clicker",0,0,0,0,this)
         this.alfred         = new Clickers("Alfred",(1/60),20,0,100,this);

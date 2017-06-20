@@ -1,6 +1,7 @@
 body {
 
      background-image: url("../images/batman-background.jpg");
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -29,8 +30,8 @@ body * {
     font-size: 180%;
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 }
-#background{  
-    background-image: url("../images/batman-background.png");
+/*#background{  
+    
     background-repeat: no-repeat;
     background-position: bottom right;
     position: absolute;
@@ -38,7 +39,7 @@ body * {
     width: 100vw;
     top: 0px;
     left: 0px;
-}
+}*/
 #startScreen{
     position: absolute;
     width: 70vw; height: 70vh;
@@ -101,3 +102,9 @@ cookie:active{
     height:410px;
 }
 
+
+#joker{
+    background-image: url("../images/joker.png");
+    width: 60px;
+    height: 120px;
+}
