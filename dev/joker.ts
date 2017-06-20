@@ -8,7 +8,7 @@ class Joker {
     constructor(game:Game){
         this.g = game;
         this.posX = (Math.random()*500);
-        this.posY = (Math.random()*window.innerHeight)-200;
+        this.posY = (Math.random()*(window.innerHeight-200));
 
 
 
@@ -18,12 +18,21 @@ class Joker {
 
         this.div.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event));
 
-        this.move();
+        this.move()
 
     }
     onMouseClick(event:MouseEvent){
+        let random = (Math.random()*2)
+        random = Math.floor(random)
+        console.log(random)
+        if(random == 0){
         this.g.score +=100;
         document.getElementById('joker').remove();
+    }if(random == 1){
+            let randomClicksPerSecond = ((Math.floor((Math.random()*10)+1))/60);
+            this.g.clicksPerSecond += randomClicksPerSecond;
+            document.getElementById('joker').remove();
+        }
     }
 
     move(){
