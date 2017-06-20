@@ -1,5 +1,5 @@
 class Batman{
-    private cookie:HTMLElement;
+    private batman:HTMLElement;
     private Xpos:number;
     private Ypos:number;
 
@@ -10,11 +10,11 @@ class Batman{
         this.Ypos = y;
         this.game = g;
 
-        this.cookie = document.createElement("cookie");
-        document.body.appendChild(this.cookie);
+        this.batman = document.createElement("cookie");
+        document.body.appendChild(this.batman);
 
         
-        this.cookie.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
+        this.batman.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
         
         this.move()
         
@@ -25,7 +25,7 @@ class Batman{
      }  
 
      move(){
-        this.cookie.style.transform = "translate("+this.Xpos+"px, "+this.Ypos+"px)";
+        this.batman.style.transform = "translate("+this.Xpos+"px, "+this.Ypos+"px)";
     }
 }
 

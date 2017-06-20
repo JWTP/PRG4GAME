@@ -14,16 +14,16 @@ var Batman = (function () {
         this.Xpos = x;
         this.Ypos = y;
         this.game = g;
-        this.cookie = document.createElement("cookie");
-        document.body.appendChild(this.cookie);
-        this.cookie.addEventListener("click", function (event) { return _this.onMouseClick(event); });
+        this.batman = document.createElement("cookie");
+        document.body.appendChild(this.batman);
+        this.batman.addEventListener("click", function (event) { return _this.onMouseClick(event); });
         this.move();
     }
     Batman.prototype.onMouseClick = function (event) {
         this.game.score += 1;
     };
     Batman.prototype.move = function () {
-        this.cookie.style.transform = "translate(" + this.Xpos + "px, " + this.Ypos + "px)";
+        this.batman.style.transform = "translate(" + this.Xpos + "px, " + this.Ypos + "px)";
     };
     return Batman;
 }());
@@ -38,7 +38,7 @@ var Clicker = (function () {
             this.cost *= 1.2;
             this.amount += 1;
             this.game.clicksPerSecond += this.clicksPS;
-            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " " + Math.floor(this.cost);
+            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " [" + Math.floor(this.cost) + "]";
         }
         else {
             alert(this.name + " costs " + Math.floor(this.cost) + " " + "batmans");
@@ -62,7 +62,7 @@ var Clickers = (function (_super) {
         _this.div = document.createElement('li');
         _this.div.setAttribute("id", _this.name);
         document.getElementById("menu").appendChild(_this.div);
-        _this.div.innerHTML = _this.name.toUpperCase() + " " + Math.floor(_this.cost);
+        _this.div.innerHTML = _this.name.toUpperCase() + " [" + Math.floor(_this.cost) + "]";
         _this.div.addEventListener("click", function (event) { return _this.onMouseClick(event); });
         _this.move();
         return _this;

@@ -19,12 +19,12 @@ class Clicker{
             this.cost *= 1.2;
             this.amount += 1;
             this.game.clicksPerSecond += this.clicksPS;
-            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " " + Math.floor(this.cost);
+            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " [" + Math.floor(this.cost) + "]";
         }else{
             alert(this.name + " costs " + Math.floor(this.cost) + " " + "batmans")
         }
      }
-     
+
     protected move(){
         this.div.style.transform = "translate("+this.posX+"px, "+this.posY+"px)";
     }     
