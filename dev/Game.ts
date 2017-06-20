@@ -1,16 +1,16 @@
 class Game{
 
-    clicksPerSecond:number = 0;
-    score: number = 1000000000000;
-    amount: number = 0;
-    cookie:Batman;
-    alfred:Clickers;
-    batman:Clickers;
-    riddler:Clickers;
-    clicker:Clicker;
-    poison_ivy:Clickers;
-    bane:Clickers;
-    Harley_Quinn:Clickers;
+    public clicksPerSecond:number = 0;
+    public score: number = 0;
+    public amount: number = 0;
+    private cookie:Batman;
+    private alfred:Clickers;
+    private batman:Clickers;
+    private riddler:Clickers;
+    private clicker:Clicker;
+    private poison_ivy:Clickers;
+    private bane:Clickers;
+    private Harley_Quinn:Clickers;
 
 
     constructor(){

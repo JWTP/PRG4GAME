@@ -35,7 +35,7 @@ var Clicker = (function () {
     Clicker.prototype.onMouseClick = function (event) {
         if (this.game.score >= this.cost) {
             this.game.score -= this.cost;
-            this.cost *= 1.2;
+            this.cost *= 1.1;
             this.amount += 1;
             this.game.clicksPerSecond += this.clicksPS;
             document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " [" + Math.floor(this.cost) + "]";
@@ -73,7 +73,7 @@ var Game = (function () {
     function Game() {
         var _this = this;
         this.clicksPerSecond = 0;
-        this.score = 1000000000000;
+        this.score = 0;
         this.amount = 0;
         this.cookie = new Batman(200, 200, this);
         this.clicker = new Clicker("Clicker", 0, 0, 0, 0, this);

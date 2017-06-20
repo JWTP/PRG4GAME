@@ -1,6 +1,6 @@
 body {
 
-     background-image: url("../images/batman-background.jpg");
+     background-image: url("../Images/batman-background.jpg");
 
     /*background: url(images/bg.jpg) no-repeat center center fixed; */
     -webkit-background-size: cover;
@@ -35,7 +35,7 @@ body * {
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 }
 #background{  
-    background-image: url("../images/bg_logo.png");
+    background-image: url("../Images/bg_logo.png");
     background-repeat: no-repeat;
     background-position: bottom right;
 
@@ -91,7 +91,7 @@ body * {
 }
 
 cookie {
-    background-image: url("../images/batman-logo.png");
+    background-image: url("../Images/batman-logo.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
