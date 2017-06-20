@@ -14,7 +14,7 @@ class Batman{
         this.batman = document.createElement("cookie");
         document.body.appendChild(this.batman);
 
-        this.random = (Math.random()*1000)
+        this.random = (Math.random()*500)
 
         console.log(this.random)
         this.batman.addEventListener("click", (event: MouseEvent) => this.onMouseClick(event)) 
