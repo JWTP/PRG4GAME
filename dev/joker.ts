@@ -4,7 +4,7 @@ class Joker {
     private posX: number = 0;
     private posY: number = 0;
     private g:Game;
-
+    
     constructor(game:Game){
         this.g = game;
         this.posX = (Math.random()*500);
@@ -40,4 +40,4 @@ class Joker {
     }
 
 
-}
+}   
