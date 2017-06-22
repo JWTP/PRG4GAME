@@ -157,12 +157,16 @@ var Startscren = (function () {
         var inside = document.createElement("div");
         this.background.appendChild(inside);
         inside.setAttribute("id", "startScreenInside");
+        var rules = document.createElement("div");
+        this.background.appendChild(rules);
+        inside.setAttribute("id", "startScreenInside");
         inside.innerHTML = "<h3>Batman Basher</h3>";
         var button = document.createElement("button");
         inside.appendChild(button);
         button.setAttribute("id", "button");
         button.innerHTML = "Start Game";
         button.addEventListener("click", this.startGame);
+        rules.innerHTML = "<br><h4>Smash that Batman logo to get more batmans<h4><br><h4>When the joker appears KILL IT!</h4>";
     }
     Startscren.prototype.startGame = function () {
         document.getElementById("startScreen").remove();

@@ -17,6 +17,10 @@ class Startscren{
         this.background.appendChild(inside);
         inside.setAttribute("id", "startScreenInside");
 
+        let rules = document.createElement("div");
+        this.background.appendChild(rules);
+        inside.setAttribute("id", "startScreenInside");
+
 
         inside.innerHTML = "<h3>Batman Basher</h3>";
 
@@ -26,6 +30,9 @@ class Startscren{
         button.setAttribute("id", "button");
         button.innerHTML = "Start Game";
         button.addEventListener("click", this.startGame);
+
+        rules.innerHTML = "<br><h4>Smash that Batman logo to get more batmans<h4><br><h4>When the joker appears KILL IT!</h4>"
+        
 
         
     }
