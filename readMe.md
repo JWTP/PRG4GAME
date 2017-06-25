@@ -42,7 +42,7 @@ Clickers erft over van de class Clicker. Hierdoor kan ik aanpassingen speciefiek
 
 Ik heb feedback gegeven aan Perry.
 
-deze is [hier](https://github.com/perrydrums/PRG4-inleveropdracht) te lezen
+deze is [hier](https://github.com/perrydrums/PRG4-inleveropdracht/issues) te lezen
 
 zijn game staat [hier](https://perrydrums.github.io/PRG4-inleveropdracht/)
 
