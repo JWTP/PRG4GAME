@@ -23,7 +23,7 @@ class Batman{
     }
     
         
-    onMouseClick(event: MouseEvent){   
+    private onMouseClick(event: MouseEvent){   
         this.game.score += 1;
         if(this.clicked > this.random){
             let joker = new Joker(this.game);

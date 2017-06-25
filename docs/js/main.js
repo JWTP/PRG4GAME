@@ -43,15 +43,6 @@ var Clicker = (function () {
         this.amount = 0;
         this.game = g;
     }
-    Clicker.prototype.onMouseClick = function (event) {
-        if (this.game.score >= this.cost) {
-            this.game.score -= this.cost;
-            this.cost *= 1.1;
-            this.amount += 1;
-            this.game.clicksPerSecond += this.clicksPS;
-            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " [$" + Math.floor(this.cost) + "]";
-        }
-    };
     Clicker.prototype.move = function () {
         this.div.style.transform = "translate(" + this.posX + "px, " + this.posY + "px)";
     };
@@ -75,6 +66,15 @@ var Clickers = (function (_super) {
         _this.move();
         return _this;
     }
+    Clickers.prototype.onMouseClick = function (event) {
+        if (this.game.score >= this.cost) {
+            this.game.score -= this.cost;
+            this.cost *= 1.1;
+            this.amount += 1;
+            this.game.clicksPerSecond += this.clicksPS;
+            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " [$" + Math.floor(this.cost) + "]";
+        }
+    };
     return Clickers;
 }(Clicker));
 var Game = (function () {

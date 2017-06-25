@@ -33,14 +33,14 @@ class Game{
         requestAnimationFrame(() => this.gameloop());
 }
 
-    updateScore(){
+    private updateScore(){
         document.getElementById("score").innerHTML = "Batmans: " + Math.floor(this.score);
 
     }
-    updateClicksPerSecond(){
+    private updateClicksPerSecond(){
         document.getElementById("clicksPerSecond").innerHTML = "Batmans per second:  " + Math.floor((this.clicksPerSecond * 60));
     }
-    updateClicks(){
+    private updateClicks(){
         this.score += this.clicksPerSecond
     }
 

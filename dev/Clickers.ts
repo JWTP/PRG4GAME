@@ -18,5 +18,17 @@ class Clickers extends Clicker{
 
         this.move();
     }
+
+    private onMouseClick(event: MouseEvent){
+        if(this.game.score >= this.cost){
+            this.game.score -= this.cost;
+            this.cost *= 1.1;
+            this.amount += 1;
+            this.game.clicksPerSecond += this.clicksPS;
+            document.getElementById(this.name).innerHTML = "[" + this.amount + "] " + this.name.toUpperCase() + " [$" + Math.floor(this.cost) + "]";
+        }
+     }
+
+
 }
 
