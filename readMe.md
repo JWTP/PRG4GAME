@@ -14,6 +14,7 @@ Je mag de game zoveel aanpassen als je wilt. Alles is geprogrammeerd in TypeScri
 UML
 
 
+
 Classes en Instances
 
 
